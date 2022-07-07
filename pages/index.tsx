@@ -84,14 +84,14 @@ const Home: NextPage = () => {
               <input
                 type="text"
                 name="url"
-                className="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none mt-10"
+                className="block w-full px-4 py-3 mb-4 border border border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none mt-10"
                 placeholder="Your link"
                 onChange={(e) => setUrl(e.target.value)}
               />
               <input
                 type="text"
                 name="fallbackUrl"
-                className="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                className="block w-full px-4 py-3 mb-4 border border border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                 placeholder="The fallback link (redirect to this URL if the short link is already used)"
                 onChange={(e) => setFallbackUrl(e.target.value)}
               />
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                   name="short-url"
                   value={shortUrl}
                   disabled
-                  className="w-full h-12 px-6 py-2 font-medium text-indigo-400 focus:outline-none"
+                  className="w-full h-12 px-6 py-2 font-medium text-blue-400 focus:outline-none"
                 />
                 <span className="relative top-0 right-0 block">
                   <button
