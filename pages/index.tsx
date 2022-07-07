@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
+import { useAnalytics } from "../utils/analytics";
 
 const Home: NextPage = () => {
   const [url, setUrl] = useState("");
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const submitButtonRef = useRef(null);
+  const analytics = useAnalytics();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ const Home: NextPage = () => {
 
     if (shortUrl) {
       navigator.clipboard.writeText(shortUrl);
+      analytics.track("Generate Short URL", { url, fallbackUrl });
       launchParty();
     }
   }, [shortUrl]);

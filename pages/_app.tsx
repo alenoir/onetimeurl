@@ -1,8 +1,13 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+/* eslint-disable @next/next/inline-script-id */
+import "../styles/globals.css";
+
+import Analytics from "analytics";
+import type { AppProps } from "next/app";
+import { useAnalytics } from "../utils/analytics";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useAnalytics();
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
