@@ -33,10 +33,10 @@ export default async function handler(
     },
   });
   res.status(200).json({
-    shortUrl: `https://${
+    shortUrl: `${
       process.env.NEXT_PUBLIC_APP_URL ||
       process.env.NEXT_PUBLIC_VERCEL_URL ||
-      "localhost:3000"
+      "http://localhost:3000"
     }/${slug}`,
   });
 }
