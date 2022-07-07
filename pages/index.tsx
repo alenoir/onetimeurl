@@ -14,17 +14,19 @@ const Home: NextPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    const queryParams = new URLSearchParams({
-      url: url,
-      fallbackUrl: fallbackUrl,
-    });
+    if (url) {
+      setLoading(true);
+      const queryParams = new URLSearchParams({
+        url: url,
+        fallbackUrl: fallbackUrl,
+      });
 
-    const res = await fetch(`/api/short?${queryParams.toString()}`);
-    const data = await res.json();
+      const res = await fetch(`/api/short?${queryParams.toString()}`);
+      const data = await res.json();
 
-    setShortUrl(data.shortUrl);
-    setLoading(false);
+      setShortUrl(data.shortUrl);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
