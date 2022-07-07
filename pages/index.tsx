@@ -49,6 +49,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (copied) {
+      analytics.track("Copy Button", { url, fallbackUrl });
       setTimeout(() => {
         setCopied(false);
       }, 2000);
