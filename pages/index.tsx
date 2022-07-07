@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
+import party from "party-js";
 
 const Home: NextPage = () => {
   const [url, setUrl] = useState("");
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
   const [shortUrl, setShortUrl] = useState();
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const submitButtonRef = useRef(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +34,9 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (shortUrl) {
       navigator.clipboard.writeText(shortUrl);
+      if (submitButtonRef.current) {
+        party.confetti(submitButtonRef.current);
+      }
     }
   }, [shortUrl]);
 
@@ -87,6 +92,7 @@ const Home: NextPage = () => {
                 className="block w-full px-4 py-3 mb-4 border border border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none mt-10"
                 placeholder="Your link"
                 onChange={(e) => setUrl(e.target.value)}
+                required
               />
               <input
                 type="text"
@@ -99,6 +105,7 @@ const Home: NextPage = () => {
                 <button
                   disabled={loading}
                   className="w-full px-3 py-4 font-medium text-white bg-blue-500 rounded-lg"
+                  ref={submitButtonRef}
                 >
                   {loading ? (
                     <>
