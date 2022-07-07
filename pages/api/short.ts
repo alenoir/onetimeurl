@@ -5,7 +5,7 @@ import { Prisma, PrismaClient, Url } from "@prisma/client";
 const prisma = new PrismaClient();
 
 type Data = {
-  url: string;
+  shortUrl: string;
 };
 
 const generateSlug = async (): Promise<string> => {
@@ -34,7 +34,9 @@ export default async function handler(
   });
   res.status(200).json({
     shortUrl: `https://${
-      process.env.NEXT_PUBLIC_VERCEL_URL || "localhost:3000"
+      process.env.NEXT_PUBLIC_APP_URL ||
+      process.env.NEXT_PUBLIC_VERCEL_URL ||
+      "localhost:3000"
     }/${slug}`,
   });
 }
