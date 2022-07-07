@@ -52,7 +52,7 @@ const Home: NextPage = () => {
       </Head>
 
       <section
-        className="w-full px-3 antialiased bg-white lg:px-6"
+        className="w-full px-6 antialiased bg-white"
         data-tails-scripts="//unpkg.com/alpinejs"
       >
         <div className="mx-auto max-w-7xl">
