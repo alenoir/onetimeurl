@@ -1,6 +1,7 @@
+import type { GetServerSideProps, NextPage } from "next";
+
 import Head from "next/head";
 import Image from "next/image";
-import type { NextPage } from "next";
 import { PrismaClient } from "@prisma/client";
 import styles from "../styles/Home.module.css";
 
@@ -10,10 +11,13 @@ const Home: NextPage = () => {
   return <div>Hello</div>;
 };
 
-export async function getServerSideProps({ res, params }) {
+export const getServerSideProps: GetServerSideProps = async ({
+  res,
+  params,
+}) => {
   const url = await prisma.url.findFirst({
     where: {
-      slug: params.slug,
+      slug: params?.slug as string,
     },
   });
 
@@ -52,6 +56,6 @@ export async function getServerSideProps({ res, params }) {
   return {
     props: {},
   };
-}
+};
 
 export default Home;
