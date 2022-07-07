@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
-import party from "party-js";
 
 const Home: NextPage = () => {
   const [url, setUrl] = useState("");
@@ -32,11 +31,16 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (shortUrl) {
-      navigator.clipboard.writeText(shortUrl);
+    const launchParty = async () => {
+      const party = (await import("party-js")).default;
       if (submitButtonRef.current) {
         party.confetti(submitButtonRef.current);
       }
+    };
+
+    if (shortUrl) {
+      navigator.clipboard.writeText(shortUrl);
+      launchParty();
     }
   }, [shortUrl]);
 
@@ -51,8 +55,42 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Butterflu - One Time Url</title>
-        <meta name="description" content="Generated One time url" />
+        <title>Butterfly - One Time Url shortner</title>
+        <meta
+          name="description"
+          content="The Number One Shortner for all your short-lived links."
+        />
+        <meta property="og:url" content="https://onetimeurl.jolatefri.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Butterfly - One Time Url shortner" />
+        <meta
+          property="og:description"
+          content="The Number One Shortner for all your short-lived links"
+        />
+        <meta
+          property="og:image"
+          content="https://onetimeurl.jolatefri.com/ogimage.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="onetimeurl.jolatefri.com" />
+        <meta
+          property="twitter:url"
+          content="https://onetimeurl.jolatefri.com/"
+        />
+        <meta
+          name="twitter:title"
+          content="Butterfly - One Time Url shortner"
+        />
+        <meta
+          name="twitter:description"
+          content="The Number One Shortner for all your short-lived links"
+        />
+        <meta
+          name="twitter:image"
+          content="https://onetimeurl.jolatefri.com/ogimage.png"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
