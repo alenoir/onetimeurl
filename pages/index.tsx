@@ -129,7 +129,7 @@ const Home: NextPage = () => {
 
             <form className="w-full md:w-3/4 lg:w-3/5" onSubmit={handleSubmit}>
               <input
-                type="text"
+                type="url"
                 name="url"
                 className="block w-full px-4 py-3 mb-4 border border border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none mt-10"
                 placeholder="Your link"
@@ -137,7 +137,7 @@ const Home: NextPage = () => {
                 required
               />
               <input
-                type="text"
+                type="url"
                 name="fallbackUrl"
                 className="block w-full px-4 py-3 mb-4 border border border-transparent border-blue-500 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                 placeholder="The fallback link (redirect to this URL if the short link is already used)"
